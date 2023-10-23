@@ -1,4 +1,5 @@
 
+# pip install rsa
 import rsa
 
 publicKey, privateKey = rsa.newkeys(512)
@@ -7,8 +8,10 @@ publicKey, privateKey = rsa.newkeys(512)
 message = "hello geeks"
 print("\nOriginal string: ", message)
 
-encMessage = rsa.encrypt(message.encode(), publicKey)
+encoded = message.encode()
+encMessage = rsa.encrypt(encoded, publicKey)
 print("\nEncrypted string: ", encMessage)
 
-decMessage = rsa.decrypt(encMessage, privateKey).decode()
-print("\nDecrypted string: ", decMessage)
+decMessage = rsa.decrypt(encMessage, privateKey)
+decoded = decMessage.decode()
+print("\nDecrypted string: ", decoded)

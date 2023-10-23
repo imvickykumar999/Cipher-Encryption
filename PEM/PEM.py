@@ -1,4 +1,5 @@
 
+# https://stackoverflow.com/a/65598901/11493297
 import rsa
 
 publicKey, privateKey = rsa.newkeys(2048) 
@@ -16,11 +17,13 @@ with open('privateKeyPkcs1PEM.txt', 'w') as f: f.write(privateKeyPkcs1PEM)
 publicKeyReloaded = rsa.PublicKey.load_pkcs1(publicKeyPkcs1PEM.encode('utf8')) 
 privateKeyReloaded = rsa.PrivateKey.load_pkcs1(privateKeyPkcs1PEM.encode('utf8')) 
 
-plaintext = "hello world".encode('utf8')
+plaintext = "hello world"
 print("\nPlaintext : ", plaintext)
 
-ciphertext = rsa.encrypt(plaintext, publicKeyReloaded)
+encoded = plaintext.encode('utf8')
+ciphertext = rsa.encrypt(encoded, publicKeyReloaded)
 print("\nCiphertext: ", ciphertext)
- 
+
 decryptedMessage = rsa.decrypt(ciphertext, privateKeyReloaded)
-print("\nDecrypted message: ", decryptedMessage)
+decoded = decryptedMessage.decode()
+print("\nDecrypted message: ", decoded)
