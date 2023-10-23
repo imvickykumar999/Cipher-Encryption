@@ -1,40 +1,20 @@
+
 from cryptography.fernet import Fernet
 
-# we will be encrypting the below string.
 message = "hello geeks"
-
-# generate a key for encryption and decryption
-# You can use fernet to generate 
-# the key or use random key generator
-# here I'm using fernet to generate key
+print("\nOriginal string : ", message)
 
 key = Fernet.generate_key()
+# key = b'n59X6L2iEqgjYx4JHXXeQ_O9w7JDarlJMzIxRNPp80g='
 
-# Instance the Fernet class with the key
-
+print('\nKey : ', key)
 fernet = Fernet(key)
 
-# then use the Fernet class instance 
-# to encrypt the string string must
-# be encoded to byte string before encryption
-encMessage = fernet.encrypt(message.encode())
+encoded = message.encode()
+encMessage = fernet.encrypt(encoded)
 
-print("original string: ", message)
-print("encrypted string: ", encMessage)
+print("\nEncrypted string : ", encMessage)
+decMessage = fernet.decrypt(encMessage)
 
-# decrypt the encrypted string with the 
-# Fernet instance of the key,
-# that was used for encrypting the string
-# encoded byte string is returned by decrypt method,
-# so decode it to string with decode methods
-decMessage = fernet.decrypt(encMessage).decode()
-
-print("decrypted string: ", decMessage)
-
-
-'''
-python Symmetric.py
-original string:  hello geeks
-encrypted string:  b'gAAAAABlNijHRizx-h4sfRjUPiJnfxqSYcrIxRsjNVcjmks9RC_CZujHzRik9e09PojLOPrXYrSGi9YjQbeGbJj0f6equNmy2w=='
-decrypted string:  hello geeks
-'''
+decoded = decMessage.decode()
+print("\nDecrypted string : ", decoded)
