@@ -7,7 +7,7 @@ print("\nOriginal string : ", message)
 key = Fernet.generate_key()
 # key = b'n59X6L2iEqgjYx4JHXXeQ_O9w7JDarlJMzIxRNPp80g='
 
-print('\nKey : ', key)
+# print('\nKey : ', key)
 fernet = Fernet(key)
 
 encoded = message.encode()
