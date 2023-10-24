@@ -11,8 +11,8 @@ publicKeyPkcs1PEM = publicKey.save_pkcs1().decode('utf8')
 privateKeyPkcs1PEM = privateKey.save_pkcs1().decode('utf8') 
 # print(privateKeyPkcs1PEM)
 
-with open('publicKeyPkcs1PEM.txt', 'w') as f: f.write(publicKeyPkcs1PEM)
-with open('privateKeyPkcs1PEM.txt', 'w') as f: f.write(privateKeyPkcs1PEM)
+with open('publicKeyPkcs1PEM.pem', 'w') as f: f.write(publicKeyPkcs1PEM)
+with open('privateKeyPkcs1PEM.pem', 'w') as f: f.write(privateKeyPkcs1PEM)
 
 publicKeyReloaded = rsa.PublicKey.load_pkcs1(publicKeyPkcs1PEM.encode('utf8')) 
 privateKeyReloaded = rsa.PrivateKey.load_pkcs1(privateKeyPkcs1PEM.encode('utf8')) 
