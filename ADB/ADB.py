@@ -2,7 +2,9 @@
 '''
 USB DEBUG:
 ---------
-https://stackoverflow.com/a/35642973/11493297
+
+USB Troubleshoot: https://stackoverflow.com/a/35642973/11493297
+Typing over Wifi: https://stackoverflow.com/a/42364486/11493297
 
 Exception : ADB Shell commands:
 ------------------------------
