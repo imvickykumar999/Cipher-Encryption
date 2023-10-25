@@ -12,8 +12,10 @@ from cryptography.fernet import Fernet
 import os
 
 key = Fernet.generate_key()
-print('\nKey:', key)
 fernet = Fernet(key)
+
+os.system(f'''adb shell input text {key.decode("utf-8")}''')
+os.system("adb shell input keyevent 66")
 
 def send(message):
     encoded = message.encode()
@@ -34,6 +36,4 @@ while True:
 
         elif i in ('"', "'"): os.system("adb shell input keyevent 75")
         else: os.system(f'''adb shell input text {i}''')
-
-    input('... ')
     os.system("adb shell input keyevent 66")

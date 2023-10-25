@@ -11,6 +11,8 @@ def get(encMessage):
     return str(decoded)
 
 while True:
-    encrypted = bytes(input('\n>>> '), "utf-8")
+    line = input('\n>>> ')
+    encrypted = bytes(line[2:-1], "utf-8")
+
     decrypted = get(encrypted)
     print('\n', decrypted)
