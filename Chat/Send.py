@@ -18,11 +18,12 @@ fernet = Fernet(key)
 def send(message):
     encoded = message.encode()
     encMessage = fernet.encrypt(encoded)
-    return encMessage
+    return str(encMessage)
 
 while True:
-    text = input('>>> ')
+    text = input('\n>>> ')
     text = send(text)
+    print('\n', text)
 
     for i in text:
         if   i == ' ': os.system("adb shell input keyevent 62")

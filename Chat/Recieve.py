@@ -2,15 +2,15 @@
 # pip install cryptography
 from cryptography.fernet import Fernet
 
+key = bytes(input('\nEnetr Key: '), "utf-8")
+fernet = Fernet(key)
+
 def get(encMessage):
     decMessage = fernet.decrypt(encMessage)
     decoded = decMessage.decode()
-    return decoded
-
-key = input('\nEnetr Key: ') # decryption
-fernet = Fernet(key)
+    return str(decoded)
 
 while True:
-    encrypted = input('>>> ')
+    encrypted = bytes(input('\n>>> '), "utf-8")
     decrypted = get(encrypted)
     print('\n', decrypted)
