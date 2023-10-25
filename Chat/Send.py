@@ -7,9 +7,22 @@
 >>> adb shell input text connected
 '''
 
+# pip install cryptography
+from cryptography.fernet import Fernet
 import os
-while True: # Ctrl+C to exit.
+
+key = Fernet.generate_key()
+print('\nKey:', key)
+fernet = Fernet(key)
+
+def send(message):
+    encoded = message.encode()
+    encMessage = fernet.encrypt(encoded)
+    return encMessage
+
+while True:
     text = input('>>> ')
+    text = send(text)
 
     for i in text:
         if   i == ' ': os.system("adb shell input keyevent 62")
@@ -20,5 +33,6 @@ while True: # Ctrl+C to exit.
 
         elif i in ('"', "'"): os.system("adb shell input keyevent 75")
         else: os.system(f'''adb shell input text {i}''')
+
     input('... ')
     os.system("adb shell input keyevent 66")
