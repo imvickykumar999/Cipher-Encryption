@@ -1,8 +1,11 @@
 
+# https://ideationology-4c639-default-rtdb.asia-southeast1.firebasedatabase.app/Fernet/Message.json
+
 # pip install cryptography
 from cryptography.fernet import Fernet
 
-key = bytes(input('\nEnetr Key: '), "utf-8")
+key = input('\nEnter Key: ')
+key = bytes(key, "utf-8")
 fernet = Fernet(key)
 
 def get(encMessage):
@@ -11,8 +14,8 @@ def get(encMessage):
     return str(decoded)
 
 while True:
-    line = input('\n>>> ')
-    encrypted = bytes(line[2:-1], "utf-8")
+    line = input('\n>>> ')[2:-1]
+    encrypted = bytes(line, "utf-8")
 
     decrypted = get(encrypted)
     print('\n', decrypted)
