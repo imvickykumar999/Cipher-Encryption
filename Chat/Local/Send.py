@@ -1,16 +1,18 @@
 
+# pip install cryptography
+from cryptography.fernet import Fernet
+import os
+
 '''
 >>> adb devices
 >>> adb tcpip 5555
 >>> adb shell "ip addr show wlan0 | grep -e wlan0$ | cut -d\" \" -f 6 | cut -d/ -f 1"
 >>> adb connect <ip-address>:5555
+
+# Remove USB.
 >>> adb shell input text connected
 >>> adb shell input keyevent 66
 '''
-
-# pip install cryptography
-from cryptography.fernet import Fernet
-import os
 
 key = Fernet.generate_key()
 fernet = Fernet(key)
